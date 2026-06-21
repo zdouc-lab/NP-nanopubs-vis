@@ -61,13 +61,6 @@ def plot_geopandas_map(df: pd.DataFrame):
         color="lightgrey",
         edgecolor="white"
     )
-    #
-    # gdf.plot(
-    #     ax=ax,
-    #     color="#116789",
-    #     markersize=30,
-    #     edgecolors="white",
-    # )
 
     for sampletype, subset in gdf.groupby("envo_label"):
         subset.plot(
