@@ -62,7 +62,11 @@ def plot_geopandas_map(df: pd.DataFrame):
         edgecolor="white"
     )
 
-    for sampletype, subset in gdf.groupby("envo_label"):
+    label_df = gdf.drop_duplicates(
+        subset=['lat', 'lng']
+    )
+
+    for sampletype, subset in label_df.groupby("envo_label"):
         subset.plot(
             ax=ax,
             markersize=30,
@@ -72,17 +76,13 @@ def plot_geopandas_map(df: pd.DataFrame):
 
     ax.legend(title="Sample Type")
 
-    label_df = gdf.drop_duplicates(
-        subset=['lat', 'lng']
-    )
-
     texts = []
     for idx, row in label_df.iterrows():
         txt = ax.text(
             row.geometry.x,
             row.geometry.y,
             f"{row['timepoint'].split('-')[0]}",
-            fontsize=7
+            fontsize=9
 
         )
         txt.set_url(row["np"])
