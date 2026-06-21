@@ -13,7 +13,7 @@ This data will be dumped as `sparql-query.csv`.
 `create-figure.py` visualizes the data by plotting it onto a map.
 
 # Step-by-step figure generation protocol
-*assumes `uv` to be installed*
+*Nota bene: assumes `uv` to be installed*
 
 ```commandline
 uv sync
